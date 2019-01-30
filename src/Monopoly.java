@@ -26,7 +26,7 @@ public class Monopoly {
     }
 
 
-    public static void playersRoll(int[] price, int playerMoney, int[] playersMoney, int field, int players,int[] rent, int[] rent1, int[] rent2, int[] rent3, int[] rent4, int[] rentHotel) {
+    public static void playersRoll(int[] price, int playerMoney, int[] playersMoney, int field, int players, int[] rent, int[] rent1, int[] rent2, int[] rent3, int[] rent4, int[] rentHotel) {
         Scanner input = new Scanner(System.in);
         switch (players) {
             case 2:
@@ -83,7 +83,7 @@ public class Monopoly {
         }
     }
 
-    public static void move(int[] price, int field, int[] playersMoney, int players, int playerMoney,int[] rent,
+    public static void move(int[] price, int field, int[] playersMoney, int players, int playerMoney, int[] rent,
                             int[] rent1, int[] rent2, int[] rent3, int[] rent4, int[] rentHotel) {
         //dice
         Scanner input = new Scanner(System.in);
@@ -123,116 +123,116 @@ public class Monopoly {
             go(players, playersMoney, playerMoney, field);
         } else if (field == 1) {
             System.out.println("You are at te first brown field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 2 || field == 17 || field == 33) {
             System.out.println("You have a community chest card.");
             System.out.println();
-            communityChest(playersMoney, players, playerMoney, field, price,rent,  rent1,  rent2,
-                    rent3,  rent4, rentHotel);
+            communityChest(playersMoney, players, playerMoney, field, price, rent, rent1, rent2,
+                    rent3, rent4, rentHotel);
             System.out.println("Money: " + playerMoney);
         } else if (field == 3) {
             System.out.println("You are at the second brown field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 4) {
             playerMoney -= 200;
             System.out.println("Income tax = 200. Money: " + playerMoney);
         } else if (field == 5) {
             System.out.println("You are at a station.");
-            station(field, playerMoney, price, playersMoney, players,rent,  rent1,  rent2,
-                    rent3,  rent4, rentHotel);
+            station(field, playerMoney, price, playersMoney, players, rent, rent1, rent2,
+                    rent3, rent4, rentHotel);
         } else if (field == 6) {
             System.out.println("You are at the first light blue field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 7 || field == 22 || field == 36) {
             System.out.println("You have a chance card.");
             System.out.println();
-            chance(players, playersMoney, playerMoney, field, price,rent,  rent1,  rent2,
-                    rent3,  rent4, rentHotel);
+            chance(players, playersMoney, playerMoney, field, price, rent, rent1, rent2,
+                    rent3, rent4, rentHotel);
             System.out.println("Your money are " + playerMoney);
         } else if (field == 8) {
             System.out.println("You are at the second light blue field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 9) {
             System.out.println("You are at the third light blue field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 10) {
             System.out.println("Jail");
         } else if (field == 11) {
             System.out.println("You are at the first pink field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 12) {
             playerMoney -= 150;
             System.out.println("Electric company = 150. Money: " + playerMoney);
         } else if (field == 13) {
             System.out.println("You are at the second pink field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 14) {
             System.out.println("You are at the third pink field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 15) {
             System.out.println("You are at a station.");
-            station(field, playerMoney, price, playersMoney, players,rent,  rent1,  rent2,
-                    rent3,  rent4, rentHotel);
+            station(field, playerMoney, price, playersMoney, players, rent, rent1, rent2,
+                    rent3, rent4, rentHotel);
         } else if (field == 16) {
             System.out.println("You are at the first orange field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 18) {
             System.out.println("You are at the second orange field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 19) {
             System.out.println("You are at the third orange field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 20) {
             System.out.println("Free parking");
         } else if (field == 21) {
             System.out.println("You are at the first red field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 23) {
             System.out.println("You are at the second red field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 24) {
             System.out.println("You are at the third red field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 25) {
             System.out.println("You are at a station.");
-            station(field, playerMoney, price, playersMoney, players,rent,  rent1,  rent2,
-            rent3,  rent4, rentHotel);
+            station(field, playerMoney, price, playersMoney, players, rent, rent1, rent2,
+                    rent3, rent4, rentHotel);
         } else if (field == 26) {
             System.out.println("You are at the first yellow field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 27) {
             System.out.println("You are at the second yellow field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 28) {
             playerMoney -= 150;
             System.out.println("Water works = 150. Money: " + playerMoney);
         } else if (field == 29) {
             System.out.println("You are at the third yellow field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 30) {
             System.out.println("You are atthe field \"Go to jail\"and you go to jail.");
             field = 10;
         } else if (field == 31) {
             System.out.println("You are at the first green field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 32) {
             System.out.println("You are at the second green field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 34) {
             System.out.println("You are at the third green field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 35) {
             System.out.println("You are at a station.");
-            station(field, playerMoney, price, playersMoney, players, rent, rent1,  rent2, rent3, rent4, rentHotel);
+            station(field, playerMoney, price, playersMoney, players, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 37) {
             System.out.println("You are at the first dark blue field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 38) {
             playerMoney -= 100;
             System.out.println("Lixury tax = 100. Money: " + playerMoney);
         } else if (field == 39) {
             System.out.println("You are at the second dark blue field. Money: " + playerMoney);
-            buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         }
     }
 
@@ -244,7 +244,7 @@ public class Monopoly {
 
     }
 
-    public static void station(int field, int playerMoney, int[] price, int[] playersMoney, int players,int[] rent,int[] rent1, int[] rent2, int[] rent3, int[] rent4, int[] rentHotel) {
+    public static void station(int field, int playerMoney, int[] price, int[] playersMoney, int players, int[] rent, int[] rent1, int[] rent2, int[] rent3, int[] rent4, int[] rentHotel) {
         Scanner input = new Scanner(System.in);
         System.out.println("Do you have the fourth stations? (yes/no)");
         String answerFiveS = input.nextLine();
@@ -277,10 +277,10 @@ public class Monopoly {
                 }
 
             } else if (answerStation == "no" || answerStation == "No" || answerStation == "NO") {
-                buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+                buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
 
             } else if (answerFiveS == "no" || answerFiveS == "No" || answerFiveS == "NO") {
-                buySellRent(price, playersMoney, players, playerMoney,field, rent, rent1, rent2, rent3, rent4, rentHotel);
+                buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
             }
         }
     }
@@ -312,8 +312,8 @@ public class Monopoly {
             System.out.println("You are at " + field);
         } else if (card == 6) {
             System.out.println("Go to Jail. Go directly to Jail.");
-            jail(price, field, playersMoney, players, playerMoney, rent,  rent1, rent2,
-            rent3, rent4, rentHotel);
+            jail(price, field, playersMoney, players, playerMoney, rent, rent1, rent2,
+                    rent3, rent4, rentHotel);
         } else if (card == 7) {
             System.out.println("Pay poor tax of $15.");
             playerMoney -= 15;
@@ -378,8 +378,8 @@ public class Monopoly {
             playerMoney += 50;
         } else if (card == 6) {
             System.out.println("Go to Jail–Go directly to jail.");
-            jail(price, field, playersMoney, players, playerMoney,rent, rent1,  rent2,
-            rent3,  rent4,  rentHotel);
+            jail(price, field, playersMoney, players, playerMoney, rent, rent1, rent2,
+                    rent3, rent4, rentHotel);
         } else if (card == 7) {
             System.out.println("Holiday Fund matures—Receive $100.");
             playerMoney += 100;
@@ -440,24 +440,32 @@ public class Monopoly {
                         case 1:
                             playersMoney[0] += price[i];
                             playerMoney -= price[i];
+                            System.out.println("Money:" + playerMoney);
+                            System.out.println("The money of the first player player " + playersMoney[0]);
                             System.out.println("If you are ready click enter.");
                             String e = input.nextLine();
                             break;
                         case 2:
                             playersMoney[1] += price[i];
                             playerMoney -= price[i];
+                            System.out.println("Money:" + playerMoney);
+                            System.out.println("The money of the second player player " + playersMoney[1]);
                             System.out.println("If you are ready click enter.");
                             String en = input.nextLine();
                             break;
                         case 3:
                             playersMoney[2] += price[i];
                             playerMoney -= price[i];
+                            System.out.println("Money:" + playerMoney);
+                            System.out.println("The money of the third player player " + playersMoney[2]);
                             System.out.println("If you are ready click enter.");
                             String ent = input.nextLine();
                             break;
                         case 4:
                             playersMoney[3] += price[i];
                             playerMoney -= price[i];
+                            System.out.println("Money:" + playerMoney);
+                            System.out.println("The money of the fourth player player " + playersMoney[3]);
                             System.out.println("If you are ready click enter.");
                             String ente = input.nextLine();
                             break;
