@@ -110,7 +110,6 @@ public class Monopoly {
             System.out.println();
             communityChest(playersMoney, players, playerMoney, field, price, rent, rent1, rent2,
                     rent3, rent4, rentHotel);
-            System.out.println("Money: " + playerMoney);
         } else if (field == 3) {
             System.out.println("You are at the second brown field. Money: " + playerMoney);
             buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
@@ -129,7 +128,6 @@ public class Monopoly {
             System.out.println();
             chance(players, playersMoney, playerMoney, field, price, rent, rent1, rent2,
                     rent3, rent4, rentHotel);
-            System.out.println("Your money are " + playerMoney);
         } else if (field == 8) {
             System.out.println("You are at the second light blue field. Money: " + playerMoney);
             buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
@@ -448,33 +446,32 @@ public class Monopoly {
                     int rentPlayer = input.nextInt();
                     switch (rentPlayer) {
                         case 1:
-                            playersMoney[0] += price[i];
-                            playerMoney -= price[i];
+                            playersMoney[0] += rent[i];
+                            playerMoney -= rent[i];
                             System.out.println("Your money:" + playerMoney);
                             System.out.println("The money of the first player player " + playersMoney[0]);
                             String e = input.nextLine();
                             break;
                         case 2:
-                            playersMoney[1] += price[i];
-                            playerMoney -= price[i];
+                            playersMoney[1] += rent[i];
+                            playerMoney -= rent[i];
                             System.out.println("Your money:" + playerMoney);
                             System.out.println("The money of the second player player " + playersMoney[1]);
                             String en = input.nextLine();
                             break;
                         case 3:
-                            playersMoney[2] += price[i];
-                            playerMoney -= price[i];
+                            playersMoney[2] += rent[i];
+                            playerMoney -= rent[i];
                             System.out.println("Your money:" + playerMoney);
                             System.out.println("The money of the third player player " + playersMoney[2]);
 
                             String ent = input.nextLine();
                             break;
                         case 4:
-                            playersMoney[3] += price[i];
-                            playerMoney -= price[i];
+                            playersMoney[3] += rent[i];
+                            playerMoney -= rent[i];
                             System.out.println("Your money:" + playerMoney);
                             System.out.println("The money of the fourth player player " + playersMoney[3]);
-
                             String ente = input.nextLine();
                             break;
 
@@ -483,30 +480,30 @@ public class Monopoly {
                             int anss = input.nextInt();
                             switch (anss) {
                                 case 1:
-                                    playersMoney[0] += price[i];
-                                    playerMoney -= price[i];
+                                    playersMoney[0] += rent[i];
+                                    playerMoney -= rent[i];
                                     System.out.println("Your money:" + playerMoney);
                                     System.out.println("The money of the first player player " + playersMoney[0]);
                                     String eenter = input.nextLine();
                                     break;
                                 case 2:
-                                    playersMoney[1] += price[i];
-                                    playerMoney -= price[i];
+                                    playersMoney[1] += rent[i];
+                                    playerMoney -= rent[i];
                                     System.out.println("Your money:" + playerMoney);
                                     System.out.println("The money of the second player player " + playersMoney[1]);
                                     String enter = input.nextLine();
                                     break;
                                 case 3:
-                                    playersMoney[2] += price[i];
-                                    playerMoney -= price[i];
+                                    playersMoney[2] += rent[i];
+                                    playerMoney -= rent[i];
                                     System.out.println("Your money:" + playerMoney);
                                     System.out.println("The money of the third player player " + playersMoney[2]);
 
                                     String enter1 = input.nextLine();
                                     break;
                                 case 4:
-                                    playersMoney[3] += price[i];
-                                    playerMoney -= price[i];
+                                    playersMoney[3] += rent[i];
+                                    playerMoney -= rent[i];
                                     System.out.println("Your money:" + playerMoney);
                                     System.out.println("The money of the fourth player player " + playersMoney[3]);
 

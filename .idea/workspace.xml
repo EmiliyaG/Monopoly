@@ -3,20 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8140633f-2b28-4f60-a649-62a4e7bf5ea9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Monopoly/FUCKTHISGAME.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Monopoly/Monopoly.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Monopoly/Monopoly.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Monopoly/neZnam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Monopoly/nzzzzzzz.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Monopoly/old.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Monopoly/x.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FUCKTHISGAME.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Monopoly/move.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Monopoly/move.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Monopoly.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monopoly.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/move.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/neZnam.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nzzzzzzz.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/x.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/of.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/of.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,33 +33,33 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="16" />
+          <entry key="java" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="16" />
+          <entry key="JAVA" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="17469" />
+          <entry key="java" value="18639" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="17469" />
+          <entry key="JAVA" value="18639" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Monopoly.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+            <state relative-caret-position="972">
+              <caret line="507" column="55" selection-start-line="507" selection-start-column="55" selection-end-line="507" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,11 +67,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/m.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="8" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/move.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2131">
-              <caret line="152" column="2" selection-start-line="152" selection-start-column="2" selection-end-line="152" selection-end-column="2" />
+            <state relative-caret-position="324">
+              <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/of.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+            <state relative-caret-position="-8">
+              <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -123,10 +122,11 @@
         <option value="$PROJECT_DIR$/src/nzzzzzzz.java" />
         <option value="$PROJECT_DIR$/src/fr.java" />
         <option value="$PROJECT_DIR$/src/x.java" />
-        <option value="$PROJECT_DIR$/src/Monopoly.java" />
         <option value="$PROJECT_DIR$/src/FUCKTHISGAME.java" />
+        <option value="$PROJECT_DIR$/src/m.java" />
         <option value="$PROJECT_DIR$/src/of.java" />
         <option value="$PROJECT_DIR$/src/move.java" />
+        <option value="$PROJECT_DIR$/src/Monopoly.java" />
       </list>
     </option>
   </component>
@@ -169,8 +169,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/User/IdeaProjects/Monopoly/src/x.java" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548868088048" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../HW_LoopsPart2_" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548879479505" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../monopoly-master (1)" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -184,16 +184,16 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.move">
-    <configuration name="FUCKTHISGAME" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="FUCKTHISGAME" />
+  <component name="RunManager" selected="Application.Monopoly">
+    <configuration name="Monopoly" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Monopoly" />
       <module name="Monopoly" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Monopoly" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Monopoly" />
+    <configuration name="m" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="m" />
       <module name="Monopoly" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -223,17 +223,17 @@
     <list>
       <item itemvalue="Application.Monopoly" />
       <item itemvalue="Application.move" />
-      <item itemvalue="Application.FUCKTHISGAME" />
       <item itemvalue="Application.of" />
       <item itemvalue="Application.neZnam" />
+      <item itemvalue="Application.m" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Monopoly" />
+        <item itemvalue="Application.m" />
         <item itemvalue="Application.move" />
         <item itemvalue="Application.neZnam" />
         <item itemvalue="Application.of" />
-        <item itemvalue="Application.FUCKTHISGAME" />
-        <item itemvalue="Application.Monopoly" />
       </list>
     </recent_temporary>
   </component>
@@ -254,7 +254,7 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49818182" visible="true" weight="0.26285347" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49818182" weight="0.26285347" />
       <window_info id="Structure" order="1" sideWeight="0.5018182" side_tool="true" weight="0.26285347" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -343,16 +343,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Monopoly.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nzzzzzzz.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
@@ -390,17 +380,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/of.java">
+    <entry file="file://$PROJECT_DIR$/src/move.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        <state relative-caret-position="324">
+          <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/move.java">
+    <entry file="file://$PROJECT_DIR$/src/of.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2131">
-          <caret line="152" column="2" selection-start-line="152" selection-start-column="2" selection-end-line="152" selection-end-column="2" />
+        <state relative-caret-position="-8">
+          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/m.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Monopoly.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="507" column="55" selection-start-line="507" selection-start-column="55" selection-end-line="507" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

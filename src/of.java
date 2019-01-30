@@ -15,7 +15,7 @@ public class of {
     public static void go(int players, int[] playersMoney, int[] price) {
         int playerMoney;
         int pricee;
-        for (int i = 0; i <players; i++) {
+        for (int i = 0; i < players; i++) {
             playerMoney = playersMoney[0];
             playerMoney += 200;
             System.out.println("Your money are " + playerMoney);
