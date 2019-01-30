@@ -1,4 +1,3 @@
-import java.net.Socket;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -22,7 +21,6 @@ public class Monopoly {
             playerMoney = playersMoney[i];
             playersRoll(price, playerMoney, playersMoney, field, players, rent, rent1, rent2, rent3, rent4, rentHotel);
         }
-
     }
 
 
@@ -92,7 +90,6 @@ public class Monopoly {
         Random rollFirst = new Random();
         int numberOne = rollFirst.nextInt(6) + 1;
         System.out.println("The first die is " + numberOne);
-        String clickEnter = input.nextLine();
         Random rollSecond = new Random();
         int numberTwo = rollSecond.nextInt(6) + 1;
         System.out.println("The second die is " + numberTwo);
@@ -100,22 +97,6 @@ public class Monopoly {
         System.out.println();
         System.out.println("The sum of the dice is " + sum);
         System.out.println();
-        if (numberOne == numberTwo) {
-            String e = input.nextLine();
-            Random firstRoll = new Random();
-            int oneNumber = rollFirst.nextInt(6) + 1;
-            System.out.println("The first die is " + oneNumber);
-            String en = input.nextLine();
-            Random secondRoll = new Random();
-            int twoNumber = rollSecond.nextInt(6) + 1;
-            System.out.println("The second die is " + twoNumber);
-            sum = numberOne + numberTwo;
-            System.out.println();
-            System.out.println("The sum of the dice is " + sum);
-            System.out.println();
-        }
-
-        //fields
         field = sum + field;
 
         if (field == 0) {
@@ -211,7 +192,7 @@ public class Monopoly {
             buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 30) {
             System.out.println("You are atthe field \"Go to jail\"and you go to jail.");
-            field = 10;
+            jail(price, field, playersMoney, players, playerMoney, rent, rent1, rent2, rent3, rent4, rentHotel);
         } else if (field == 31) {
             System.out.println("You are at the first green field. Money: " + playerMoney);
             buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
@@ -236,22 +217,20 @@ public class Monopoly {
         }
     }
 
-
     public static void go(int players, int[] playersMoney, int playerMoney, int field) {
         playerMoney += 200;
-        field = 0;
         System.out.println("Your money are " + playerMoney);
 
     }
 
     public static void station(int field, int playerMoney, int[] price, int[] playersMoney, int players, int[] rent, int[] rent1, int[] rent2, int[] rent3, int[] rent4, int[] rentHotel) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Do you have the fourth stations? (yes/no)");
-        String answerFiveS = input.nextLine();
-        if (answerFiveS == "yes" || answerFiveS == "Yes" || answerFiveS == "YES") {
-            System.out.println("Do you want to travel? (yes/no)");
-            String answerStation = input.nextLine();
-            if (answerStation == "yes" || answerStation == "Yes" || answerStation == "YES") {
+        System.out.println("Do you have the fourth stations? (Answer with true(yes) or false(no))");
+        boolean answerFiveS = input.nextBoolean();
+        if (answerFiveS == true) {
+            System.out.println("Do you want to travel? (Answer with true(yes) or false(no))");
+            boolean answerStation = input.nextBoolean();
+            if (answerStation == true) {
                 System.out.println("Where? (answer with 5/15/25/35)");
                 int answer = input.nextInt();
                 switch (answer) {
@@ -276,25 +255,31 @@ public class Monopoly {
                         break;
                 }
 
-            } else if (answerStation == "no" || answerStation == "No" || answerStation == "NO") {
+            } else if (answerStation == false) {
                 buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
-
-            } else if (answerFiveS == "no" || answerFiveS == "No" || answerFiveS == "NO") {
-                buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
+            } else {
+                System.out.println("Answer with true(yes) or false(no)");
             }
+        } else if (answerFiveS == false) {
+            buySellRent(price, playersMoney, players, playerMoney, field, rent, rent1, rent2, rent3, rent4, rentHotel);
+        } else {
+            System.out.println("Answer with true(yes) or false(no)");
         }
     }
 
     public static void chance(int players, int[] playersMoney, int playerMoney, int field, int[] price,
                               int[] rent, int[] rent1, int[] rent2, int[] rent3, int[] rent4, int[] rentHotel) {
+
         Random rand = new Random();
         int card = rand.nextInt(16) + 1;
         if (card == 1) {
             System.out.println("Advance to \"Go\". (Collect $200) ");
             go(players, playersMoney, playerMoney, field);
+            System.out.println("Money: " + playerMoney);
         } else if (card == 2) {
             System.out.println("Advance to Illinois Avenue. If you pass Go, collect $200. ");
             field = 24;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 3) {
             System.out.println("Advance to St. Charles Place. If you pass Go, collect $200. ");
             if (field >= 11) {
@@ -303,9 +288,11 @@ public class Monopoly {
             } else {
                 field = 11;
             }
+            System.out.println("Money: " + playerMoney);
         } else if (card == 4) {
             System.out.println("Bank pays you dividend of $50.");
             playerMoney += 50;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 5) {
             System.out.println("Go Back Three Spaces.");
             field -= 3;
@@ -316,6 +303,7 @@ public class Monopoly {
                     rent3, rent4, rentHotel);
         } else if (card == 7) {
             System.out.println("Pay poor tax of $15.");
+            System.out.println("Money: " + playerMoney);
             playerMoney -= 15;
         } else if (card == 8) {
             System.out.println("Take a trip to Reading Railroad. If you pass Go, collect $200. ");
@@ -325,24 +313,31 @@ public class Monopoly {
             } else {
                 field = 5;
             }
+            System.out.println("Money: " + playerMoney);
         } else if (card == 9) {
             System.out.println("Bank pays you dividend of $100.");
             playerMoney += 100;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 10) {
             System.out.println("Your building and loan matures. Collect $150. ");
             playerMoney += 150;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 11) {
             System.out.println("You have won a crossword competition. Collect $100.");
             playerMoney += 100;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 12) {
             System.out.println("Pay 30.");
             playerMoney -= 30;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 13) {
             System.out.println("Pay tax of $40. ");
             playerMoney -= 40;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 14) {
             System.out.println("Bank error. You receive 50");
             playerMoney += 50;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 15) {
             System.out.println("Take a trip to B. & O. Railroad. If you pass Go, collect $200. ");
             if (field >= 25) {
@@ -351,6 +346,7 @@ public class Monopoly {
             } else {
                 field = 25;
             }
+            System.out.println("Money: " + playerMoney);
         } else if (card == 16) {
             System.out.println("Get out of Jail Free. ");
         }
@@ -364,18 +360,23 @@ public class Monopoly {
             System.out.println("Advance to Go. You receive 200.");
             field = 0;
             playerMoney += 200;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 2) {
             System.out.println("Bank error in your favor—Collect $200.");
             playerMoney += 200;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 3) {
             System.out.println("Doctor's fee—Pay $50.");
             playerMoney -= 50;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 4) {
             System.out.println("From sale of stock you get $50.");
             playerMoney += 50;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 5) {
             System.out.println("Grand Opera Night—Collect $50.");
             playerMoney += 50;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 6) {
             System.out.println("Go to Jail–Go directly to jail.");
             jail(price, field, playersMoney, players, playerMoney, rent, rent1, rent2,
@@ -383,30 +384,39 @@ public class Monopoly {
         } else if (card == 7) {
             System.out.println("Holiday Fund matures—Receive $100.");
             playerMoney += 100;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 8) {
             System.out.println("Income tax refund–Collect $20.");
             playerMoney += 20;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 9) {
             System.out.println("It is your birthday—Collect $10.");
             playerMoney += 10;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 10) {
             System.out.println("Life insurance matures–Collect $100.");
             playerMoney += 100;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 11) {
             System.out.println("Pay hospital fees of $100.");
             playerMoney -= 100;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 12) {
             System.out.println("Pay school fees of $150.");
             playerMoney -= 150;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 13) {
             System.out.println("Receive $25 consultancy fee.");
             playerMoney += 25;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 14) {
             System.out.println("You have won second prize in a beauty contest–Collect $10.");
             playerMoney += 10;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 15) {
             System.out.println("You inherit $100.");
             playerMoney += 100;
+            System.out.println("Money: " + playerMoney);
         } else if (card == 16) {
             System.out.println("Get Out of Jail Free.");
         }
@@ -440,33 +450,31 @@ public class Monopoly {
                         case 1:
                             playersMoney[0] += price[i];
                             playerMoney -= price[i];
-                            System.out.println("Money:" + playerMoney);
+                            System.out.println("Your money:" + playerMoney);
                             System.out.println("The money of the first player player " + playersMoney[0]);
-                            System.out.println("If you are ready click enter.");
                             String e = input.nextLine();
                             break;
                         case 2:
                             playersMoney[1] += price[i];
                             playerMoney -= price[i];
-                            System.out.println("Money:" + playerMoney);
+                            System.out.println("Your money:" + playerMoney);
                             System.out.println("The money of the second player player " + playersMoney[1]);
-                            System.out.println("If you are ready click enter.");
                             String en = input.nextLine();
                             break;
                         case 3:
                             playersMoney[2] += price[i];
                             playerMoney -= price[i];
-                            System.out.println("Money:" + playerMoney);
+                            System.out.println("Your money:" + playerMoney);
                             System.out.println("The money of the third player player " + playersMoney[2]);
-                            System.out.println("If you are ready click enter.");
+
                             String ent = input.nextLine();
                             break;
                         case 4:
                             playersMoney[3] += price[i];
                             playerMoney -= price[i];
-                            System.out.println("Money:" + playerMoney);
+                            System.out.println("Your money:" + playerMoney);
                             System.out.println("The money of the fourth player player " + playersMoney[3]);
-                            System.out.println("If you are ready click enter.");
+
                             String ente = input.nextLine();
                             break;
 
@@ -475,19 +483,34 @@ public class Monopoly {
                             int anss = input.nextInt();
                             switch (anss) {
                                 case 1:
-
-                                    System.out.println("If you are ready click enter.");
-                                    String eeEenter = input.nextLine();
+                                    playersMoney[0] += price[i];
+                                    playerMoney -= price[i];
+                                    System.out.println("Your money:" + playerMoney);
+                                    System.out.println("The money of the first player player " + playersMoney[0]);
+                                    String eenter = input.nextLine();
                                     break;
                                 case 2:
-
-                                    System.out.println("If you are ready click enter.");
-                                    String eeeeEnter = input.nextLine();
+                                    playersMoney[1] += price[i];
+                                    playerMoney -= price[i];
+                                    System.out.println("Your money:" + playerMoney);
+                                    System.out.println("The money of the second player player " + playersMoney[1]);
+                                    String enter = input.nextLine();
                                     break;
                                 case 3:
+                                    playersMoney[2] += price[i];
+                                    playerMoney -= price[i];
+                                    System.out.println("Your money:" + playerMoney);
+                                    System.out.println("The money of the third player player " + playersMoney[2]);
 
-                                    System.out.println("If you are ready click enter.");
-                                    String eEeEEnter = input.nextLine();
+                                    String enter1 = input.nextLine();
+                                    break;
+                                case 4:
+                                    playersMoney[3] += price[i];
+                                    playerMoney -= price[i];
+                                    System.out.println("Your money:" + playerMoney);
+                                    System.out.println("The money of the fourth player player " + playersMoney[3]);
+
+                                    String enter2 = input.nextLine();
                                     break;
                             }
                             break;
@@ -582,21 +605,21 @@ public class Monopoly {
                     }
                     break;
                 case 3:
-                    System.out.println("Do you have a cart? (yes or no)");
-                    String answ = input.nextLine();
-                    if (answ == "yes" || answ == "Yes" || answ == "YES") {
+                    System.out.println("Do you have a cart? (Answer with true(yes) or false(no))");
+                    boolean answ = input.nextBoolean();
+                    if (answ == true) {
                         System.out.println("You get out of th jail.");
                         move(price, field, playersMoney, players, playerMoney, rent, rent1, rent2, rent3, rent4, rentHotel);
-                    } else if (answ == "no" || answ == "No" || answ == "NO") {
+                    } else if (answ == false) {
                         System.out.println("Click enter.");
                         String ent = input.nextLine();
                     } else {
-                        System.out.println("Answer with yes or no!");
-                        String answe = input.nextLine();
-                        if (answe == "yes" || answe == "Yes" || answe == "YES") {
+                        System.out.println("Answer with true or false!");
+                        boolean answe = input.nextBoolean();
+                        if (answe == true) {
                             System.out.println("You get out of th jail.");
                             move(price, field, playersMoney, players, playerMoney, rent, rent1, rent2, rent3, rent4, rentHotel);
-                        } else if (answe == "no" || answe == "No" || answe == "NO") {
+                        } else if (answe == false) {
                             System.out.println("Click enter.");
                             String ent = input.nextLine();
                         }
@@ -612,64 +635,11 @@ public class Monopoly {
             rent3, int[] rent4, int[] rentHotel) {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Do you have all the fields of one color?(yes/no)");
-        String answe = input.nextLine();
-        if (answe == "yes" || answe == "Yes" || answe == "YES") {
+        System.out.println("Do you have all the fields of one color? (Answer with true(yes) or false(no)");
+        boolean answe = input.nextBoolean();
+        if (answe == true) {
             build(price, playerMoney, rent, rent1, rent2, rent3, rent4, rentHotel);
-//            System.out.println("Which color?(1-8)\n 1. brown\n2. light blue\n3. pink\n4. orange\n5. red\n6. yellow\n7. green\n8. dark blue");
-//            int answer = input.nextInt();
-//            switch (answer) {
-//                case 1:
-//
-//build(price,playerMoney,rent,rent1,rent2,rent3,rent4,rentHotel);
-////                    price[1] +=;
-////                    price[3] +=;
-//                    break;
-//                case 2:
-//                    build(price,playerMoney,rent,rent1,rent2,rent3,rent4,rentHotel);
-////                    price[6] +=;
-////                    price[8] +=;
-////                    price[9] +=;
-//                    break;
-//                case 3:
-//                    build(price,playerMoney,rent,rent1,rent2,rent3,rent4,rentHotel);
-////                    price[11] +=;
-////                    price[13] +=;
-////                    price[14] +=;
-//                    break;
-//                case 4:
-////                    price[16] +=;
-////                    price[18] +=;
-////                    price[19] +=;
-//                    break;
-//                case 5:
-//                    build(price,playerMoney,rent,rent1,rent2,rent3,rent4,rentHotel);
-////                    price[21] +=;
-////                    price[23] +=;
-////                    price[24] +=;
-//                    break;
-//                case 6:
-//                    build(price,playerMoney,rent,rent1,rent2,rent3,rent4,rentHotel);
-////                    price[26] +=;
-////                    price[27] +=;
-////                    price[29] +=;
-//                    break;
-//                case 7:
-//                    build(price,playerMoney,rent,rent1,rent2,rent3,rent4,rentHotel);
-////                    price[31] +=;
-////                    price[32] +=;
-////                    price[34] +=;
-//                    break;
-//                case 8:
-//                    build(price,playerMoney,rent,rent1,rent2,rent3,rent4,rentHotel);
-////                    price[37] +=;
-////                    price[39] +=;
-//                    break;
-//
-//                default:
-//                    System.out.println("Answer with number from 1 to 9!");
-//            }
-        } else if (answe == "no" || answe == "No" || answe == "NO") {
+        } else if (answe == false) {
             System.out.println("You can not build.");
         }
     }
@@ -680,9 +650,9 @@ public class Monopoly {
         int houses = input.nextInt();
         switch (houses) {
             case 0:
-                System.out.println("Do you want to build?(yes/no)");
-                String answer = input.nextLine();
-                if (answer == "yes" || answer == "Yes" || answer == "YES") {
+                System.out.println("Do you want to build? (Answer with true(yes) or false(no)");
+                boolean answer = input.nextBoolean();
+                if (answer == true) {
                     for (int i = 0; i < rent.length; i++) {
                         rent[i] += rent1[i];
                         playerMoney -= 50;
@@ -690,18 +660,18 @@ public class Monopoly {
                         playerMoney -= 50;
                         System.out.println("Money: " + playerMoney);
                     }
-                } else if (answer == "no" || answer == "No" || answer == "NO") {
+                } else if (answer == false) {
                     System.out.println("Click enter.");
                     String enter = input.nextLine();
                 } else {
-                    System.out.println("Answer with yes or no!");
+                    System.out.println("Answer with true or false!");
                 }
 
                 break;
             case 1:
-                System.out.println("Do you want to build?(yes/no)");
-                String answer1 = input.nextLine();
-                if (answer1 == "yes" || answer1 == "Yes" || answer1 == "YES") {
+                System.out.println("Do you want to build? (Answer with true(yes) or false(no)");
+                boolean answer1 = input.nextBoolean();
+                if (answer1 == true) {
                     for (int i = 0; i < rent.length; i++) {
                         rent[i] += rent1[i];
                         playerMoney -= 50;
@@ -709,17 +679,17 @@ public class Monopoly {
                         playerMoney -= 50;
                         System.out.println("Money: " + playerMoney);
                     }
-                } else if (answer1 == "no" || answer1 == "No" || answer1 == "NO") {
+                } else if (answer1 == false) {
                     System.out.println("Click enter.");
                     String enter = input.nextLine();
                 } else {
-                    System.out.println("Answer with yes or no!");
+                    System.out.println("Answer with true or false!");
                 }
                 break;
             case 2:
-                System.out.println("Do you want to build?(yes/no)");
-                String answer2 = input.nextLine();
-                if (answer2 == "yes" || answer2 == "Yes" || answer2 == "YES") {
+                System.out.println("Do you want to build? (Answer with true(yes) or false(no)");
+                boolean answer2 = input.nextBoolean();
+                if (answer2 == true) {
                     for (int i = 0; i < rent.length; i++) {
                         rent[i] += rent2[i];
                         playerMoney -= 50;
@@ -727,35 +697,35 @@ public class Monopoly {
                         playerMoney -= 50;
                         System.out.println("Money: " + playerMoney);
                     }
-                } else if (answer2 == "no" || answer2 == "No" || answer2 == "NO") {
+                } else if (answer2 == false) {
                     System.out.println("Click enter.");
                     String enter = input.nextLine();
                 } else {
-                    System.out.println("Answer with yes or no!");
+                    System.out.println("Answer with true or false!");
                 }
                 break;
             case 3:
-                System.out.println("Do you want to build?(yes/no)");
-                String answer3 = input.nextLine();
-                if (answer3 == "yes" || answer3 == "Yes" || answer3 == "YES") {
-                    for (int i = 0; i < rent.length; i++) {
+                System.out.println("Do you want to build? (Answer with true(yes) or false(no)");
+                boolean answer3 = input.nextBoolean();
+                if (answer3 == true) {
+                    for (int i = 0; i < 1; i++) {
                         rent[i] += rent3[i];
                         playerMoney -= 50;
                         rent[i] += rent3[i];
                         playerMoney -= 50;
                         System.out.println("Money: " + playerMoney);
                     }
-                } else if (answer3 == "no" || answer3 == "No" || answer3 == "NO") {
+                } else if (answer3 == false) {
                     System.out.println("Click enter.");
                     String enter = input.nextLine();
                 } else {
-                    System.out.println("Answer with yes or no!");
+                    System.out.println("Answer with true or false!");
                 }
                 break;
             case 4:
-                System.out.println("Do you want to build?(yes/no)");
-                String answer4 = input.nextLine();
-                if (answer4 == "yes" || answer4 == "Yes" || answer4 == "YES") {
+                System.out.println("Do you want to build? (Answer with true(yes) or false(no)");
+                boolean answer4 = input.nextBoolean();
+                if (answer4 == true) {
                     for (int i = 0; i < rent.length; i++) {
                         rent[i] += rent4[i];
                         playerMoney -= 50;
@@ -763,17 +733,17 @@ public class Monopoly {
                         playerMoney -= 50;
                         System.out.println("Money: " + playerMoney);
                     }
-                } else if (answer4 == "no" || answer4 == "No" || answer4 == "NO") {
+                } else if (answer4 == false) {
                     System.out.println("Click enter.");
                     String enter = input.nextLine();
                 } else {
-                    System.out.println("Answer with yes or no!");
+                    System.out.println("Answer with true or false!");
                 }
                 break;
             case 5:
-                System.out.println("Do you want to build?(yes/no)");
-                String answer5 = input.nextLine();
-                if (answer5 == "yes" || answer5 == "Yes" || answer5 == "YES") {
+                System.out.println("Do you want to build? (Answer with true(yes) or false(no)");
+                boolean answer5 = input.nextBoolean();
+                if (answer5 == true) {
                     for (int i = 0; i < rent.length; i++) {
                         rent[i] += rentHotel[i];
                         playerMoney -= 200;
@@ -781,11 +751,11 @@ public class Monopoly {
                         playerMoney -= 200;
                         System.out.println("Money: " + playerMoney);
                     }
-                } else if (answer5 == "no" || answer5 == "No" || answer5 == "NO") {
+                } else if (answer5 == false) {
                     System.out.println("Click enter.");
                     String enter = input.nextLine();
                 } else {
-                    System.out.println("Answer with yes or no!");
+                    System.out.println("Answer with true or false!");
                 }
                 break;
             default:

@@ -35,7 +35,8 @@ public class move {
 
     public static void move(int[] price, int field, int[] playersMoney, int players, int playerMoney) {
         Scanner input = new Scanner(System.in);
-        int sum1;
+
+        int sum2;
         String enter = input.nextLine();
         Random rollFirst = new Random();
         int numberOne = rollFirst.nextInt(6) + 1;
@@ -43,113 +44,113 @@ public class move {
         Random rollSecond = new Random();
         int numberTwo = rollSecond.nextInt(6) + 1;
         System.out.println("The second die is " + numberTwo);
-        sum1 = numberOne + numberTwo;
+        sum2 = numberOne + numberTwo;
         System.out.println();
-        System.out.println("The sum of the dice is " + sum1);
+        System.out.println("The sum of the dice is " + sum2);
         System.out.println();
-        int sum2 = 0;
+        int sum1 = 0;
+        sum2 = sum1 + sum2;
         //fields
         for (int i = 0; i < 1; i++) {
-            field = sum1 + field;
+
             playerMoney = playersMoney[i];
             if (field >= 40) {
                 field = field - 40;
                 System.out.println("You are at " + field);
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+
+
             } else if (sum2 == 30) {
                 System.out.println("You are at " + field + "and you go to jail");
                 field = 10;
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
             } else if (sum2 == 7 || sum2 == 22 || sum2 == 36) {
                 System.out.println("You have a chance card.");
                 System.out.println();
 
                 System.out.println("Your money are " + playerMoney);
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
             } else if (sum2 == 2 || sum2 == 17 || sum2 == 33) {
-                sum2 = sum1 + sum2;
+                sum1 += sum2;
                 System.out.println("You have a community chest card.");
                 System.out.println();
 
                 System.out.println("Your money are " + playerMoney);
 
-                System.out.println(sum2);
+                System.out.println(sum1);
 
             } else if (sum2 == 5 || sum2 == 15 || sum2 == 25 || sum2 == 35) {
                 System.out.println("You are at station.");
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
             } else if (sum2 == 1 || sum2 == 3) {
                 System.out.println("You are at brown field and your money are " + playerMoney);
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
             } else if (sum2 == 6 || sum2 == 8 || sum2 == 9) {
                 System.out.println("You are at light blue field.");
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
             } else if (sum2 == 11 || sum2 == 13 || sum2 == 14) {
                 System.out.println("You are at pink field.");
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
             } else if (sum2 == 16 || sum2 == 18 || sum2 == 19) {
                 System.out.println("You are at orange field.");
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
             } else if (sum2 == 21 || sum2 == 23 || sum2 == 24) {
                 System.out.println("You are at red field.");
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
 
             } else if (sum2 == 26 || sum2 == 27 || sum2 == 29) {
                 System.out.println("You are at yellow field.");
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
             } else if (sum2 == 31 || sum2 == 32 || sum2 == 34) {
                 System.out.println("You are at green field.");
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
             } else if (sum2 == 37 || sum2 == 39) {
                 System.out.println("You are at dark blue field.");
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
 
             } else if (sum2 == 0) {
                 System.out.println("You are at GO.");
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
             } else if (sum2 == 4) {
                 System.out.println("Income tax = 200. Money: " + playerMoney);
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
             } else if (sum2 == 10) {
                 System.out.println("Jail");
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
             } else if (sum2 == 12) {
                 System.out.println("Electric company = 150. Money: " + playerMoney);
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
             } else if (sum2 == 20) {
                 System.out.println("Free parking");
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
             } else if (sum2 == 18) {
                 System.out.println("Water works = 150. Money: " + playerMoney);
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
-
+                sum1 += sum2;
+                System.out.println(sum1);
             } else if (sum2 == 38) {
                 System.out.println("Lixury tax = 100. Money: " + playerMoney);
-                sum2 = sum1 + sum2;
-                System.out.println(sum2);
+                sum1 += sum2;
+                System.out.println(sum1);
             }
         }
     }
 
-    int playerRoll = 1;
+//    int playerRoll = 1;
 //        int name = 2;
 //        String nameFirst = "";
 //        String nameSecond = "";
@@ -200,7 +201,7 @@ public class move {
 //                playerRoll = 1;
 //            }
 //        }
-      // System.out.println("Board: ");
+    // System.out.println("Board: ");
 //        String[][] board = {{"0. GO", "1. Mediterranean Avenue", "2. Community Chest ", "3. Baltic Avenue", "4. INCOME TAX", "5. Reading Railroad < RR >", "6. Oriental Avenue", "7. Chance ", "8. Vermont Avenue", "9. Connecticut Avenue", "10. Jail"},
 //                {
 //                        "11. Saint Charles Place [magenta]", "12. Electic Company", "13. States Avenue [magenta]", "14. Virginia Avenue [magenta]", "15. Pennsylvania RR < RR >", "16. Saint James Place [orange]", "17. Community Chest ", "18. Tennessee Avenue [orange]", "19. New York Avenue [orange]", "20. Free Parking"
@@ -213,7 +214,62 @@ public class move {
 //        };
 
 
-   // public static void dice() {
+    // System.out.println("Which color?(1-8)\n 1. brown\n2. light blue\n3. pink\n4. orange\n5. red\n6. yellow\n7. green\n8. dark blue");
+//            int answer = input.nextInt();
+//            switch (answer) {
+//                case 1:
+//
+//build(price,playerMoney,rent,rent1,rent2,rent3,rent4,rentHotel);
+////                    price[1] +=;
+////                    price[3] +=;
+//                    break;
+//                case 2:
+//                    build(price,playerMoney,rent,rent1,rent2,rent3,rent4,rentHotel);
+////                    price[6] +=;
+////                    price[8] +=;
+////                    price[9] +=;
+//                    break;
+//                case 3:
+//                    build(price,playerMoney,rent,rent1,rent2,rent3,rent4,rentHotel);
+////                    price[11] +=;
+////                    price[13] +=;
+////                    price[14] +=;
+//                    break;
+//                case 4:
+////                    price[16] +=;
+////                    price[18] +=;
+////                    price[19] +=;
+//                    break;
+//                case 5:
+//                    build(price,playerMoney,rent,rent1,rent2,rent3,rent4,rentHotel);
+////                    price[21] +=;
+////                    price[23] +=;
+////                    price[24] +=;
+//                    break;
+//                case 6:
+//                    build(price,playerMoney,rent,rent1,rent2,rent3,rent4,rentHotel);
+////                    price[26] +=;
+////                    price[27] +=;
+////                    price[29] +=;
+//                    break;
+//                case 7:
+//                    build(price,playerMoney,rent,rent1,rent2,rent3,rent4,rentHotel);
+////                    price[31] +=;
+////                    price[32] +=;
+////                    price[34] +=;
+//                    break;
+//                case 8:
+//                    build(price,playerMoney,rent,rent1,rent2,rent3,rent4,rentHotel);
+////                    price[37] +=;
+////                    price[39] +=;
+//                    break;
+//
+//                default:
+//                    System.out.println("Answer with number from 1 to 9!");
+//            }
+
+
+    // public static void dice() {
 //        Scanner input = new Scanner(System.in);
 //        int sum;
 //        String enter = input.nextLine();
