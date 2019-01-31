@@ -1,11 +1,11 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class Monopoly {
+public class old {
     public static int field = 0;
-    public static int[] playersMoney = {2000, 2000, 2000, 2000};
+    public static int[] playersMoney = {1000, 2000, 3000, 4000};
     public static int playerMoney;
-    public static int[] price = {0,60, 0, 60, 200, 200, 100, 0, 100, 120, 0, 140, 150, 140, 160, 0, 180, 0, 180, 200, 0, 220, 0, 220, 240, 0, 260, 260, 0, 280, 0, 300, 300, 0, 320, 0, 0, 350, 100, 400};
+    public static int[] price = {60, 0, 60, 200, 200, 100, 0, 100, 120, 200, 140, 150, 140, 160, 200, 180, 0, 180, 200, 0, 220, 0, 220, 240, 200, 260, 260, 150, 280, 0, 300, 300, 0, 320, 200, 350, 200, 0, 250, 100, 400};
     public static int[] rent = {0, 4, 0, 8, 0, 25, 12, 0, 12, 16, 0, 20, 0, 20, 24, 0, 28, 0, 28, 32, 0, 36, 0, 36, 40, 0, 44, 44, 0, 48, 0, 52, 52, 0, 54, 0, 0, 70, 0, 100};
     public static int[] rentOneHouse = {0, 10, 0, 20, 0, 0, 30, 0, 30, 40, 0, 50, 0, 50, 60, 0, 70, 0, 70, 80, 0, 90, 0, 90, 100, 0, 110, 110, 0, 120, 0, 150, 150, 0, 160, 0, 0, 175, 0, 200};
     public static int[] rentTwoHouses = {0, 30, 0, 60, 0, 0, 90, 0, 90, 100, 0, 150, 0, 150, 180, 0, 200, 0, 200, 220, 0, 250, 0, 250, 300, 0, 330, 330, 0, 360, 0, 450, 450, 0, 460, 0, 0, 500, 0, 600};
@@ -27,7 +27,7 @@ public class Monopoly {
             playersRoll(players);
         }
     }
-//rent pari izchistvane zatvor2
+
 
     public static void playersRoll(int players) {
         Scanner input = new Scanner(System.in);
@@ -229,19 +229,19 @@ public class Monopoly {
                 switch (answer) {
                     case 5:
                         field = 5;
-                        System.out.println("You are at Reading railroad.");
+                        System.out.println("You are at Reading railroad." + field);
                         break;
                     case 15:
                         field = 15;
-                        System.out.println("You are at Pennsylvania railroad.");
+                        System.out.println("You are at Pennsylvania railroad." + field);
                         break;
                     case 25:
                         field = 25;
-                        System.out.println("You are at B. & O. railroad.");
+                        System.out.println("You are at B. & O. railroad." + field);
                         break;
                     case 35:
                         field = 35;
-                        System.out.println("You are at Short line.");
+                        System.out.println("You are at Short line." + field);
                         break;
                     default:
                         System.out.println("Enter one of the three stations. (5, 15, 25 or 35)");
@@ -416,7 +416,7 @@ public class Monopoly {
         System.out.println("Do you want to buy, sell or rent the property?(1, 2, 3 or 4)");
         System.out.println("\n 1. Buy \n 2. Sell \n 3. Rent \n 4. No");
         int answer = input.nextInt();
-        for (int i = field; i < 100000000; i++) {
+        for (int i = field; i < 10000000; i++) {
             switch (answer) {
                 case 1:
                     System.out.println("It costs " + price[i]);
@@ -557,7 +557,7 @@ public class Monopoly {
 
     public static void jail(int players) {
         Scanner input = new Scanner(System.in);
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < players; i++) {
             playerMoney = playersMoney[i];
             System.out.println(String.format("%s\n%s\n%s\n%s\n%s", "You have 3 choices to get out of the jail.", "1. Pay 50.", "2. Throw a pair.", "3. With card.", "answer with 1, 2 or 3."));
             int answer = input.nextInt();
@@ -581,21 +581,20 @@ public class Monopoly {
                     if (numberOne == numberTwo) {
                         System.out.println("You get out of th jail. Click enter to throw the dice.");
                         move(players);
+                    } else while (numberOne != numberTwo) {
+                        String enter2 = input.nextLine();
+                        Random rollFirst1 = new Random();
+                        int numberO = rollFirst1.nextInt(6) + 1;
+                        System.out.println("The first die is " + numberO);
+                        String enter3 = input.nextLine();
+                        Random rollSecond2 = new Random();
+                        int numberT = rollSecond2.nextInt(6) + 1;
+                        System.out.println("The second die is " + numberT);
+                        if (numberO == numberT) {
+                            System.out.println("You get out of th jail. Click enter to throw the dice.");
+                            move(players);
+                        }
                     }
-//                    } else while (numberOne != numberTwo) {
-//                        String enter2 = input.nextLine();
-//                        Random rollFirst1 = new Random();
-//                        int numberO = rollFirst1.nextInt(6) + 1;
-//                        System.out.println("The first die is " + numberO);
-//                        String enter3 = input.nextLine();
-//                        Random rollSecond2 = new Random();
-//                        int numberT = rollSecond2.nextInt(6) + 1;
-//                        System.out.println("The second die is " + numberT);
-//                        if (numberO == numberT) {
-//                            System.out.println("You get out of th jail. Click enter to throw the dice.");
-//                            move(players);
-//                        }
-//                    }
                     break;
                 case 3:
                     System.out.println("Do you have a cart? (Answer with true(yes) or false(no))");
@@ -685,20 +684,12 @@ public class Monopoly {
 
     public static void housesAndHotel(int players) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Do you have all the fields of one color? (Answer with true(yes) or false(no))");
+        System.out.println("Do you have all the fields of one color? (Answer with true(yes) or false(no)");
         boolean answer = input.nextBoolean();
         if (answer == true) {
             build(players);
         } else if (answer == false) {
             System.out.println("You can not build.");
-        } else {
-            System.out.println("Do you have all the fields of one color? (Answer with true(yes) or false(no))");
-            boolean answer1 = input.nextBoolean();
-            if (answer1 == true) {
-                build(players);
-            } else if (answer1 == false) {
-                System.out.println("You can not build.");
-            }
         }
     }
 
@@ -708,7 +699,7 @@ public class Monopoly {
         int houses = input.nextInt();
         switch (houses) {
             case 0:
-                System.out.println("Do you want to build? (Answer with true(yes) or false(no))");
+                System.out.println("Do you want to build? (Answer with true(yes) or false(no)");
                 boolean answer = input.nextBoolean();
                 if (answer == true) {
                     for (int i = 0; i < 1; i++) {
@@ -899,3 +890,4 @@ public class Monopoly {
         }
     }
 }
+
