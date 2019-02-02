@@ -23,7 +23,7 @@ public class Monopoly {
         System.out.println("Select the number of players:");
         int players = input.nextInt();
         for (int i = 0; i < players; i++) {
-            playerMoney = playersMoney[players];
+            playerMoney = playersMoney[i];
             playersRoll(players);
         }
     }
@@ -43,10 +43,10 @@ public class Monopoly {
                     move(players);
                 }
                 //winer
-                if (playersMoney[0] <= 0) {
-                    System.out.println(secondName + "win");
-                } else if (playersMoney[1] <= 0) {
+                if (playersMoney[1] <= 0) {
                     System.out.println(firstName + "win");
+                } else if (playersMoney[0] <= 0) {
+                    System.out.println(secondName + "win");
                 }
                 break;
             case 3:
@@ -63,6 +63,14 @@ public class Monopoly {
                     move(players);
                     System.out.println(thirdPlayer + " it is your turn. Click enter to throw the dice.");
                     move(players);
+                }
+                //winer
+                if (playersMoney[1] <= 0 && playersMoney[2] <= 0) {
+                    System.out.println(firstPlayer + "win");
+                } else if (playersMoney[0] <= 0 && playersMoney[2] <= 0) {
+                    System.out.println(secondPlayer + "win");
+                } else if (playersMoney[0] <= 0 && playersMoney[1] <= 0) {
+                    System.out.println(thirdPlayer + "win");
                 }
                 break;
             case 4:
@@ -84,6 +92,16 @@ public class Monopoly {
                     System.out.println(fourthNickname + " it is your turn. Click enter to throw the dice.");
                     move(players);
                 }
+                //winer
+                if (playersMoney[1] <= 0 && playersMoney[2] <= 0 && playersMoney[3] <= 0) {
+                    System.out.println(firstNickname + "win");
+                } else if (playersMoney[0] <= 0 && playersMoney[2] <= 0 && playersMoney[3] <= 0) {
+                    System.out.println(secondNickname + "win");
+                } else if (playersMoney[0] <= 0 && playersMoney[1] <= 0 && playersMoney[3] <= 0) {
+                    System.out.println(thirdNickname + "win");
+                } else if (playersMoney[0] <= 0 && playersMoney[1] <= 0 && playersMoney[2] <= 0) {
+                    System.out.println(fourthNickname + "win");
+                }
                 break;
             default:
                 System.out.println("The players can be from 2 to 4!");
@@ -91,8 +109,7 @@ public class Monopoly {
         }
     }
 
-    public static void move(int players) {
-        //dice
+    public static void dice() {
         Scanner input = new Scanner(System.in);
         int sum;
         String enter = input.nextLine();
@@ -105,121 +122,150 @@ public class Monopoly {
         sum = numberOne + numberTwo;
         System.out.println("The sum of the dice is " + sum);
         field = sum + field;
-        //fields
+    }
+
+
+    public static void move(int players) {
+        dice();
         if (field == 0) {
             System.out.println("You are at field GO.");
             go();
         } else if (field == 1) {
             System.out.println("You are at te first brown field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 2 || field == 17 || field == 33) {
             System.out.println("You have a community chest card.");
             communityChest(players);
         } else if (field == 3) {
             System.out.println("You are at the second brown field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 4) {
             playerMoney -= 200;
             System.out.println("Income tax = 200. Money: " + playerMoney);
-        } else if (field == 5) {
+        } else if (field == 5 || field == 15 || field == 25 || field == 35) {
             System.out.println("You are at a station.");
             buySellRent();
             station();
         } else if (field == 6) {
             System.out.println("You are at the first light blue field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 7 || field == 22 || field == 36) {
             System.out.println("You have a chance card.");
             chance(players);
         } else if (field == 8) {
             System.out.println("You are at the second light blue field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 9) {
             System.out.println("You are at the third light blue field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 10) {
             System.out.println("Jail");
         } else if (field == 11) {
             System.out.println("You are at the first pink field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 12) {
             playerMoney -= 150;
             System.out.println("Electric company = 150. Money: " + playerMoney);
         } else if (field == 13) {
             System.out.println("You are at the second pink field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 14) {
             System.out.println("You are at the third pink field. Money: " + playerMoney);
             buySellRent();
-        } else if (field == 15) {
-            System.out.println("You are at a station.");
-            buySellRent();
-            station();
+            housesAndHotel();
         } else if (field == 16) {
             System.out.println("You are at the first orange field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 18) {
             System.out.println("You are at the second orange field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 19) {
             System.out.println("You are at the third orange field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 20) {
-            System.out.println("Free parking");
+            System.out.println("Free parking. Nothing happens.");
         } else if (field == 21) {
             System.out.println("You are at the first red field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 23) {
             System.out.println("You are at the second red field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 24) {
             System.out.println("You are at the third red field. Money: " + playerMoney);
             buySellRent();
-        } else if (field == 25) {
-            System.out.println("You are at a station.");
-            buySellRent();
-            station();
+            housesAndHotel();
         } else if (field == 26) {
             System.out.println("You are at the first yellow field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 27) {
             System.out.println("You are at the second yellow field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 28) {
             playerMoney -= 150;
             System.out.println("Water works = 150. Money: " + playerMoney);
         } else if (field == 29) {
             System.out.println("You are at the third yellow field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 30) {
             System.out.println("You are atthe field \"Go to jail\"and you go to jail.");
             jail(players);
         } else if (field == 31) {
             System.out.println("You are at the first green field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 32) {
             System.out.println("You are at the second green field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 34) {
             System.out.println("You are at the third green field. Money: " + playerMoney);
             buySellRent();
-        } else if (field == 35) {
-            System.out.println("You are at a station.");
-            buySellRent();
-            station();
+            housesAndHotel();
         } else if (field == 37) {
             System.out.println("You are at the first dark blue field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field == 38) {
             playerMoney -= 100;
             System.out.println("Luxury tax = 100. Money: " + playerMoney);
         } else if (field == 39) {
             System.out.println("You are at the second dark blue field. Money: " + playerMoney);
             buySellRent();
+            housesAndHotel();
         } else if (field >= 40) {
             field = field - 40;
             System.out.println("You are at " + namesFields[field]);
-            buySellRent();
+            if (field == 1 || field == 3 || field == 6 || field == 8 || field == 9 || field == 11) {
+                buySellRent();
+                housesAndHotel();
+            } else if (field == 2) {
+                communityChest(players);
+            } else if (field == 4) {
+                playerMoney -= 200;
+            } else if (field == 5) {
+                buySellRent();
+                station();
+            } else if (field == 7) {
+                chance(players);
+            } else if (field == 0) {
+                go();
+            }
+
         }
     }
 
@@ -279,26 +325,22 @@ public class Monopoly {
                             case 1:
                                 playerMoney -= 25;
                                 playersMoney[0] += 25;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[0]);
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[0]));
                                 break;
                             case 2:
                                 playerMoney -= 50;
                                 playersMoney[0] += 50;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[0]);
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[0]));
                                 break;
                             case 3:
                                 playerMoney -= 75;
                                 playersMoney[0] += 75;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[0]);
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[0]));
                                 break;
                             case 4:
                                 playerMoney -= 100;
                                 playersMoney[0] += 100;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[0]);
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[0]));
                                 break;
                         }
                         break;
@@ -309,26 +351,22 @@ public class Monopoly {
                             case 1:
                                 playerMoney -= 25;
                                 playersMoney[1] += 25;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[1]);
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[1]));
                                 break;
                             case 2:
                                 playerMoney -= 50;
                                 playersMoney[1] += 50;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[1]);
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[1]));
                                 break;
                             case 3:
                                 playerMoney -= 75;
                                 playersMoney[1] += 75;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[1]);
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[1]));
                                 break;
                             case 4:
                                 playerMoney -= 100;
                                 playersMoney[1] += 100;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[1]);
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[1]));
                                 break;
                         }
                         break;
@@ -339,27 +377,22 @@ public class Monopoly {
                             case 1:
                                 playerMoney -= 25;
                                 playersMoney[2] += 25;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[2]);
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[2]));
                                 break;
                             case 2:
                                 playerMoney -= 50;
                                 playersMoney[2] += 50;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[2]);
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[2]));
                                 break;
                             case 3:
                                 playerMoney -= 75;
                                 playersMoney[2] += 75;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[2]);
-
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[2]));
                                 break;
                             case 4:
                                 playerMoney -= 100;
                                 playersMoney[2] += 100;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[2]);
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[2]));
                                 break;
                         }
                         break;
@@ -370,26 +403,22 @@ public class Monopoly {
                             case 1:
                                 playerMoney -= 25;
                                 playersMoney[3] += 25;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[3]);
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[3]));
                                 break;
                             case 2:
                                 playerMoney -= 50;
                                 playersMoney[3] += 50;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[3]);
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[3]));
                                 break;
                             case 3:
                                 playerMoney -= 75;
                                 playersMoney[3] += 75;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[3]);
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[3]));
                                 break;
                             case 4:
                                 playerMoney -= 100;
                                 playersMoney[3] += 100;
-                                System.out.println("Your money: " + playerMoney);
-                                System.out.println("The other player's money: " + playersMoney[3]);
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The other player's money: ", playersMoney[3]));
                                 break;
                         }
                         break;
@@ -419,62 +448,52 @@ public class Monopoly {
             }
             System.out.println("Money: " + playerMoney);
         } else if (card == 4) {
-            System.out.println("Bank pays you dividend of $50.");
             playerMoney += 50;
-            System.out.println("Money: " + playerMoney);
+            System.out.println(String.format("%s\n%s%d", "Bank pays you dividend of $50.", "Money: ", playerMoney));
         } else if (card == 5) {
-            System.out.println("Go Back Three Spaces.");
             field -= 3;
-            System.out.println("You are at " + field);
+            System.out.println(String.format("%s\n%s%d", "Go Back Three Spaces.", "You are at ", field));
         } else if (card == 6) {
             System.out.println("Go to Jail. Go directly to Jail.");
             jail(players);
         } else if (card == 7) {
-            System.out.println("Pay poor tax of $15.");
-            System.out.println("Money: " + playerMoney);
             playerMoney -= 15;
+            System.out.println(String.format("%s\n%s%d", "Pay poor tax of $15.", "Money: ", playerMoney));
         } else if (card == 8) {
-            System.out.println("Take a trip to Reading Railroad. If you pass Go, collect $200. ");
             if (field >= 5) {
                 playerMoney += 200;
                 field = 5;
             } else {
                 field = 5;
             }
-            System.out.println("Money: " + playerMoney);
+            System.out.println(String.format("%s\n%s%d", "Take a trip to Reading Railroad. If you pass Go, collect $200. ", "Money: ", playerMoney));
         } else if (card == 9) {
-            System.out.println("Bank pays you dividend of $100.");
+            System.out.println();
             playerMoney += 100;
-            System.out.println("Money: " + playerMoney);
+            System.out.println(String.format("%s\n%s%d", "Bank pays you dividend of $100.", "Money: ", playerMoney));
         } else if (card == 10) {
-            System.out.println("Your building and loan matures. Collect $150. ");
             playerMoney += 150;
-            System.out.println("Money: " + playerMoney);
+            System.out.println(String.format("%s\n%s%d", "Your building and loan matures. Collect $150. ", "Money: ", playerMoney));
         } else if (card == 11) {
-            System.out.println("You have won a crossword competition. Collect $100.");
             playerMoney += 100;
-            System.out.println("Money: " + playerMoney);
+            System.out.println(String.format("%s\n%s%d", "You have won a crossword competition. Collect $100. ", "Money: ", playerMoney));
         } else if (card == 12) {
-            System.out.println("Pay 30.");
             playerMoney -= 30;
-            System.out.println("Money: " + playerMoney);
+            System.out.println(String.format("%s\n%s%d", "Pay 30. ", "Money: ", playerMoney));
         } else if (card == 13) {
-            System.out.println("Pay tax of $40. ");
             playerMoney -= 40;
-            System.out.println("Money: " + playerMoney);
+            System.out.println(String.format("%s\n%s%d", "Pay tax of $40.  ", "Money: ", playerMoney));
         } else if (card == 14) {
-            System.out.println("Bank error. You receive 50");
             playerMoney += 50;
-            System.out.println("Money: " + playerMoney);
+            System.out.println(String.format("%s\n%s%d", "Bank error. You receive 50 ", "Money: ", playerMoney));
         } else if (card == 15) {
-            System.out.println("Take a trip to B. & O. Railroad. If you pass Go, collect $200. ");
             if (field >= 25) {
                 playerMoney += 200;
                 field = 25;
             } else {
                 field = 25;
             }
-            System.out.println("Money: " + playerMoney);
+            System.out.println(String.format("%s\n%s%d", "Take a trip to B. & O. Railroad. If you pass Go, collect $200.", "Money: ", playerMoney));
         } else if (card == 16) {
             System.out.println("Get out of Jail Free. ");
         }
@@ -560,9 +579,7 @@ public class Monopoly {
         switch (answer) {
             case 1:
                 moneyAfterPaying = playerMoney - price[field];
-                System.out.println("Money: " + moneyAfterPaying);
-                System.out.println("You have " + namesFields[field]);
-                housesAndHotel();
+                System.out.println(String.format("%s%d\n%s%s", "Money: ", moneyAfterPaying, "You have ", namesFields[field]));
                 break;
             case 2:
                 moneyAfterSelling = playerMoney + price[field];
@@ -575,62 +592,47 @@ public class Monopoly {
                     case 1:
                         playersMoney[0] += rent[field];
                         playerMoney -= rent[field];
-                        System.out.println("Your money:" + playerMoney);
-                        System.out.println("The money of the first player player " + playersMoney[0]);
-                        String enter = input.nextLine();
+                        System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The money of the first player player: ", playersMoney[0]));
                         break;
                     case 2:
                         playersMoney[1] += rent[field];
                         playerMoney -= rent[field];
-                        System.out.println("Your money:" + playerMoney);
-                        System.out.println("The money of the second player player " + playersMoney[1]);
-                        String enter1 = input.nextLine();
+                        System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The money of the second player player: ", playersMoney[1]));
                         break;
                     case 3:
                         playersMoney[2] += rent[field];
                         playerMoney -= rent[field];
-                        System.out.println("Your money:" + playerMoney);
-                        System.out.println("The money of the third player player " + playersMoney[2]);
-                        String enter2 = input.nextLine();
+                        System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The money of the third player player: ", playersMoney[2]));
                         break;
                     case 4:
                         playersMoney[3] += rent[field];
                         playerMoney -= rent[field];
-                        System.out.println("Your money:" + playerMoney);
-                        System.out.println("The money of the fourth player player " + playersMoney[3]);
-                        String enter3 = input.nextLine();
+                        System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The money of the fourth player player: ", playersMoney[3]));
                         break;
                     default:
                         System.out.println("Answer with number!");
+                        //repetition
                         int defaultCase3 = input.nextInt();
                         switch (defaultCase3) {
                             case 1:
                                 playersMoney[0] += rent[field];
                                 playerMoney -= rent[field];
-                                System.out.println("Your money:" + playerMoney);
-                                System.out.println("The money of the first player player " + playersMoney[0]);
-                                String enter4 = input.nextLine();
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The money of the first player player: ", playersMoney[0]));
                                 break;
                             case 2:
                                 playersMoney[1] += rent[field];
                                 playerMoney -= rent[field];
-                                System.out.println("Your money:" + playerMoney);
-                                System.out.println("The money of the second player player " + playersMoney[1]);
-                                String enter5 = input.nextLine();
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The money of the second player player: ", playersMoney[1]));
                                 break;
                             case 3:
                                 playersMoney[2] += rent[field];
                                 playerMoney -= rent[field];
-                                System.out.println("Your money:" + playerMoney);
-                                System.out.println("The money of the third player player " + playersMoney[2]);
-                                String enter6 = input.nextLine();
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The money of the third player player: ", playersMoney[2]));
                                 break;
                             case 4:
                                 playersMoney[3] += rent[field];
                                 playerMoney -= rent[field];
-                                System.out.println("Your money:" + playerMoney);
-                                System.out.println("The money of the fourth player player " + playersMoney[3]);
-                                String enter7 = input.nextLine();
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The money of the fourth player player: ", playersMoney[3]));
                                 break;
                         }
                         break;
@@ -640,12 +642,12 @@ public class Monopoly {
                 break;
             default:
                 System.out.println("Answer with 1, 2, 3 or 4!");
+                //repetition
                 int answerDefault = input.nextInt();
                 switch (answerDefault) {
                     case 1:
                         moneyAfterPaying = playersMoney[field] - price[field];
-                        System.out.println("Your money are " + moneyAfterPaying);
-                        housesAndHotel();
+                        System.out.println("Money: " + moneyAfterPaying);
                         break;
                     case 2:
                         moneyAfterSelling = playerMoney + price[field];
@@ -658,30 +660,22 @@ public class Monopoly {
                             case 1:
                                 playersMoney[0] += rent[field];
                                 playerMoney -= rent[field];
-                                System.out.println("Your money:" + playerMoney);
-                                System.out.println("The money of the first player player " + playersMoney[0]);
-                                String enter8 = input.nextLine();
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The money of the first player player: ", playersMoney[0]));
                                 break;
                             case 2:
                                 playersMoney[1] += rent[field];
                                 playerMoney -= rent[field];
-                                System.out.println("Your money:" + playerMoney);
-                                System.out.println("The money of the second player player " + playersMoney[1]);
-                                String enter9 = input.nextLine();
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The money of the second player player: ", playersMoney[1]));
                                 break;
                             case 3:
                                 playersMoney[2] += rent[field];
                                 playerMoney -= rent[field];
-                                System.out.println("Your money:" + playerMoney);
-                                System.out.println("The money of the third player player " + playersMoney[2]);
-                                String enter10 = input.nextLine();
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The money of the third player player: ", playersMoney[2]));
                                 break;
                             case 4:
                                 playersMoney[3] += rent[field];
                                 playerMoney -= rent[field];
-                                System.out.println("Your money:" + playerMoney);
-                                System.out.println("The money of the fourth player player " + playersMoney[3]);
-                                String enter11 = input.nextLine();
+                                System.out.println(String.format("%s%d\n%s%d", "Your money: ", playerMoney, "The money of the fourth player player: ", playersMoney[3]));
                                 break;
                         }
                     case 4:
@@ -698,11 +692,11 @@ public class Monopoly {
         switch (answer) {
             case 1:
                 playerMoney -= 50;
-                System.out.println("Your money are " + playerMoney);
-                System.out.println("Click enter to throw the dice");
+                System.out.println(String.format("%s%d\n%s", "Your money are ", playerMoney, "Click enter to throw the dice"));
                 move(players);
                 break;
             case 2:
+                //dice
                 String enter = input.nextLine();
                 Random rollFirst = new Random();
                 int numberOne = rollFirst.nextInt(6) + 1;
@@ -710,9 +704,11 @@ public class Monopoly {
                 Random rollSecond = new Random();
                 int numberTwo = rollSecond.nextInt(6) + 1;
                 System.out.println("The second die is " + numberTwo);
+
                 if (numberOne == numberTwo) {
                     System.out.println("You get out of th jail.");
                 } else {
+                    //dice
                     String enter2 = input.nextLine();
                     Random rollFirst1 = new Random();
                     int numberO = rollFirst1.nextInt(6) + 1;
@@ -720,6 +716,7 @@ public class Monopoly {
                     Random rollSecond2 = new Random();
                     int numberT = rollSecond2.nextInt(6) + 1;
                     System.out.println("The second die is " + numberT);
+
                     if (numberO == numberT) {
                         System.out.println("You get out of th jail.");
                     }
@@ -742,11 +739,11 @@ public class Monopoly {
                 switch (answer1) {
                     case 1:
                         playerMoney -= 50;
-                        System.out.println("Your money are " + playerMoney);
-                        System.out.println("Click enter to throw the dice");
+                        System.out.println(String.format("%s%d\n%s", "Your money are ", playerMoney, "Click enter to throw the dice"));
                         move(players);
                         break;
                     case 2:
+                        //dice
                         String enter0 = input.nextLine();
                         Random rollF = new Random();
                         int numberO = rollF.nextInt(6) + 1;
@@ -754,9 +751,11 @@ public class Monopoly {
                         Random rollS = new Random();
                         int numberT = rollS.nextInt(6) + 1;
                         System.out.println("The second die is " + numberT);
+
                         if (numberO == numberT) {
                             System.out.println("You get out of th jail.");
                         } else {
+                            //dice
                             String enter2 = input.nextLine();
                             Random rollFirst1 = new Random();
                             int numberOne1 = rollFirst1.nextInt(6) + 1;
@@ -764,6 +763,7 @@ public class Monopoly {
                             Random rollSecond2 = new Random();
                             int numberTwo2 = rollSecond2.nextInt(6) + 1;
                             System.out.println("The second die is " + numberTwo2);
+
                             if (numberOne1 == numberTwo2) {
                                 System.out.println("You get out of th jail.");
                             }
@@ -808,43 +808,34 @@ public class Monopoly {
                     case 1:
                         buildHouses();
                         brownRentWithOneHouse();
-                        System.out.println("You have 1 house on each field.");
                         break;
                     case 2:
                         buildHouses();
                         lightBlueRentWithOneHouse();
-                        System.out.println("You have 1 house on each field.");
                         break;
                     case 3:
                         buildHouses();
                         pinkRentWithOneHouse();
-                        System.out.println("You have 1 house on each field.");
                         break;
                     case 4:
                         buildHouses();
                         orangeRentWithOneHouse();
-                        System.out.println("You have 1 house on each field.");
                         break;
                     case 5:
                         buildHouses();
                         redRentWithOneHouse();
-                        System.out.println("You have 1 house on each field.");
                         break;
                     case 6:
                         buildHouses();
                         yellowRentWithOneHouse();
-                        System.out.println("You have 1 house on each field.");
                         break;
                     case 7:
                         buildHouses();
                         greenRentWithOneHouse();
-                        System.out.println("You have 1 house on each field.");
                         break;
                     case 8:
                         buildHouses();
-                        darkBlueRentWithOneHouse();
-                        System.out.println("You have 1 house on each field.");
-                        break;
+                        darkBlueRentWithOneHouse();break;
                 }
                 break;
             case 1:
@@ -855,42 +846,34 @@ public class Monopoly {
                     case 1:
                         buildHouses();
                         brownRentWithTwoHouses();
-                        System.out.println("You have 2 houses on each field.");
                         break;
                     case 2:
                         buildHouses();
                         lightBlueRentWithTwoHouses();
-                        System.out.println("You have 2 houses on each field.");
                         break;
                     case 3:
                         buildHouses();
                         pinkRentWithTwoHouses();
-                        System.out.println("You have 2 houses on each field.");
                         break;
                     case 4:
                         buildHouses();
                         orangeRentWithTwoHouses();
-                        System.out.println("You have 2 houses on each field.");
                         break;
                     case 5:
                         buildHouses();
                         redRentWithTwoHouses();
-                        System.out.println("You have 2 houses on each field.");
                         break;
                     case 6:
                         buildHouses();
                         yellowRentWithTwoHouses();
-                        System.out.println("You have 2 houses on each field.");
                         break;
                     case 7:
                         buildHouses();
                         greenRentWithTwoHouses();
-                        System.out.println("You have 2 houses on each field.");
                         break;
                     case 8:
                         buildHouses();
                         darkBlueRentWithTwoHouses();
-                        System.out.println("You have 2 houses on each field.");
                         break;
                 }
                 break;
@@ -902,42 +885,34 @@ public class Monopoly {
                     case 1:
                         buildHouses();
                         brownRentWithThreeHouses();
-                        System.out.println("You have 3 houses on each field.");
                         break;
                     case 2:
                         buildHouses();
                         lightBlueRentWithThreeHouses();
-                        System.out.println("You have 3 houses on each field.");
                         break;
                     case 3:
                         buildHouses();
                         pinkRentWithThreeHouse();
-                        System.out.println("You have 3 houses on each field.");
                         break;
                     case 4:
                         buildHouses();
                         orangeRentWithThreeHouses();
-                        System.out.println("You have 3 houses on each field.");
                         break;
                     case 5:
                         buildHouses();
                         redRentWithThreeHouses();
-                        System.out.println("You have 3 houses on each field.");
                         break;
                     case 6:
                         buildHouses();
                         yellowRentWithThreeHouses();
-                        System.out.println("You have 3 houses on each field.");
                         break;
                     case 7:
                         buildHouses();
                         greenRentWithThreeHouses();
-                        System.out.println("You have 3 houses on each field.");
                         break;
                     case 8:
                         buildHouses();
                         darkBlueRentWithThreeHouses();
-                        System.out.println("You have 3 houses on each field.");
                         break;
                 }
                 break;
@@ -948,43 +923,34 @@ public class Monopoly {
                 switch (color3) {
                     case 1:
                         buildHouses();
-                        brownRentWithFourHouses();
-                        System.out.println("You have 4 houses on each field.");
-                        break;
+                        brownRentWithFourHouses();break;
                     case 2:
                         buildHouses();
                         lightBlueRentWithFourHouses();
-                        System.out.println("You have 4 houses on each field.");
                         break;
                     case 3:
                         buildHouses();
                         pinkRentWithFourHouse();
-                        System.out.println("You have 4 houses on each field.");
                         break;
                     case 4:
                         buildHouses();
                         orangeRentWithFourHouses();
-                        System.out.println("You have 4 houses on each field.");
                         break;
                     case 5:
                         buildHouses();
                         redRentWithFourHouses();
-                        System.out.println("You have 4 houses on each field.");
                         break;
                     case 6:
                         buildHouses();
                         yellowRentWithFourHouses();
-                        System.out.println("You have 4 houses on each field.");
                         break;
                     case 7:
                         buildHouses();
                         greenRentWithFourHouses();
-                        System.out.println("You have 4 houses on each field.");
                         break;
                     case 8:
                         buildHouses();
                         darkBlueRentWithFourHouses();
-                        System.out.println("You have 4 houses on each field.");
                         break;
                 }
                 break;
@@ -996,42 +962,34 @@ public class Monopoly {
                     case 1:
                         buildHotel();
                         brownRentWithHotel();
-                        System.out.println("You have a hotel on each field.");
                         break;
                     case 2:
                         buildHotel();
                         lightBlueRentWithHotel();
-                        System.out.println("You have a hotel on each field.");
                         break;
                     case 3:
                         buildHotel();
                         pinkRentWithHotel();
-                        System.out.println("You have a hotel on each field.");
                         break;
                     case 4:
                         buildHotel();
                         orangeRentWithHotel();
-                        System.out.println("You have 2 houses on each field.");
                         break;
                     case 5:
                         buildHotel();
                         redRentWithHotel();
-                        System.out.println("You have a hotel on each field.");
                         break;
                     case 6:
                         buildHotel();
                         yellowRentWithHotel();
-                        System.out.println("You have a hotel on each field.");
                         break;
                     case 7:
                         buildHotel();
                         greenRentWithHotel();
-                        System.out.println("You have a hotel on each field.");
                         break;
                     case 8:
                         buildHotel();
                         darkBlueRentWithHotel();
-                        System.out.println("You have a hotel on each field.");
                         break;
                 }
                 break;
@@ -1051,42 +1009,34 @@ public class Monopoly {
                             case 1:
                                 buildHouses();
                                 brownRentWithOneHouse();
-                                System.out.println("You have 1 house on each field.");
                                 break;
                             case 2:
                                 buildHouses();
                                 lightBlueRentWithOneHouse();
-                                System.out.println("You have 1 house on each field.");
                                 break;
                             case 3:
                                 buildHouses();
                                 pinkRentWithOneHouse();
-                                System.out.println("You have 1 house on each field.");
                                 break;
                             case 4:
                                 buildHouses();
                                 orangeRentWithOneHouse();
-                                System.out.println("You have 1 house on each field.");
                                 break;
                             case 5:
                                 buildHouses();
                                 redRentWithOneHouse();
-                                System.out.println("You have 1 house on each field.");
                                 break;
                             case 6:
                                 buildHouses();
                                 yellowRentWithOneHouse();
-                                System.out.println("You have 1 house on each field.");
                                 break;
                             case 7:
                                 buildHouses();
                                 greenRentWithOneHouse();
-                                System.out.println("You have 1 house on each field.");
                                 break;
                             case 8:
                                 buildHouses();
                                 darkBlueRentWithOneHouse();
-                                System.out.println("You have 1 house on each field.");
                                 break;
                         }
                         break;
@@ -1098,42 +1048,34 @@ public class Monopoly {
                             case 1:
                                 buildHouses();
                                 brownRentWithTwoHouses();
-                                System.out.println("You have 2 houses on each field.");
                                 break;
                             case 2:
                                 buildHouses();
                                 lightBlueRentWithTwoHouses();
-                                System.out.println("You have 2 houses on each field.");
                                 break;
                             case 3:
                                 buildHouses();
                                 pinkRentWithTwoHouses();
-                                System.out.println("You have 2 houses on each field.");
                                 break;
                             case 4:
                                 buildHouses();
                                 orangeRentWithTwoHouses();
-                                System.out.println("You have 2 houses on each field.");
                                 break;
                             case 5:
                                 buildHouses();
                                 redRentWithTwoHouses();
-                                System.out.println("You have 2 houses on each field.");
                                 break;
                             case 6:
                                 buildHouses();
                                 yellowRentWithTwoHouses();
-                                System.out.println("You have 2 houses on each field.");
                                 break;
                             case 7:
                                 buildHouses();
                                 greenRentWithTwoHouses();
-                                System.out.println("You have 2 houses on each field.");
                                 break;
                             case 8:
                                 buildHouses();
                                 darkBlueRentWithTwoHouses();
-                                System.out.println("You have 2 houses on each field.");
                                 break;
                         }
                         break;
@@ -1145,42 +1087,34 @@ public class Monopoly {
                             case 1:
                                 buildHouses();
                                 brownRentWithThreeHouses();
-                                System.out.println("You have 3 houses on each field.");
                                 break;
                             case 2:
                                 buildHouses();
                                 lightBlueRentWithThreeHouses();
-                                System.out.println("You have 3 houses on each field.");
                                 break;
                             case 3:
                                 buildHouses();
                                 pinkRentWithThreeHouse();
-                                System.out.println("You have 3 houses on each field.");
                                 break;
                             case 4:
                                 buildHouses();
                                 orangeRentWithThreeHouses();
-                                System.out.println("You have 3 houses on each field.");
                                 break;
                             case 5:
                                 buildHouses();
                                 redRentWithThreeHouses();
-                                System.out.println("You have 3 houses on each field.");
                                 break;
                             case 6:
                                 buildHouses();
                                 yellowRentWithThreeHouses();
-                                System.out.println("You have 3 houses on each field.");
                                 break;
                             case 7:
                                 buildHouses();
                                 greenRentWithThreeHouses();
-                                System.out.println("You have 3 houses on each field.");
                                 break;
                             case 8:
                                 buildHouses();
                                 darkBlueRentWithThreeHouses();
-                                System.out.println("You have 3 houses on each field.");
                                 break;
                         }
                         break;
@@ -1192,42 +1126,34 @@ public class Monopoly {
                             case 1:
                                 buildHouses();
                                 brownRentWithFourHouses();
-                                System.out.println("You have 4 houses on each field.");
                                 break;
                             case 2:
                                 buildHouses();
                                 lightBlueRentWithFourHouses();
-                                System.out.println("You have 4 houses on each field.");
                                 break;
                             case 3:
                                 buildHouses();
                                 pinkRentWithFourHouse();
-                                System.out.println("You have 4 houses on each field.");
                                 break;
                             case 4:
                                 buildHouses();
                                 orangeRentWithFourHouses();
-                                System.out.println("You have 4 houses on each field.");
                                 break;
                             case 5:
                                 buildHouses();
                                 redRentWithFourHouses();
-                                System.out.println("You have 4 houses on each field.");
                                 break;
                             case 6:
                                 buildHouses();
                                 yellowRentWithFourHouses();
-                                System.out.println("You have 4 houses on each field.");
                                 break;
                             case 7:
                                 buildHouses();
                                 greenRentWithFourHouses();
-                                System.out.println("You have 4 houses on each field.");
                                 break;
                             case 8:
                                 buildHouses();
                                 darkBlueRentWithFourHouses();
-                                System.out.println("You have 4 houses on each field.");
                                 break;
                         }
                         break;
@@ -1239,42 +1165,34 @@ public class Monopoly {
                             case 1:
                                 buildHotel();
                                 brownRentWithHotel();
-                                System.out.println("You have a hotel on each field.");
                                 break;
                             case 2:
                                 buildHotel();
                                 lightBlueRentWithHotel();
-                                System.out.println("You have a hotel on each field.");
                                 break;
                             case 3:
                                 buildHotel();
                                 pinkRentWithHotel();
-                                System.out.println("You have a hotel on each field.");
                                 break;
                             case 4:
                                 buildHotel();
                                 orangeRentWithHotel();
-                                System.out.println("You have 2 houses on each field.");
                                 break;
                             case 5:
                                 buildHotel();
                                 redRentWithHotel();
-                                System.out.println("You have a hotel on each field.");
                                 break;
                             case 6:
                                 buildHotel();
                                 yellowRentWithHotel();
-                                System.out.println("You have a hotel on each field.");
                                 break;
                             case 7:
                                 buildHotel();
                                 greenRentWithHotel();
-                                System.out.println("You have a hotel on each field.");
                                 break;
                             case 8:
                                 buildHotel();
                                 darkBlueRentWithHotel();
-                                System.out.println("You have a hotel on each field.");
                                 break;
                         }
                         break;
@@ -1303,8 +1221,7 @@ public class Monopoly {
         boolean answer51 = input.nextBoolean();
         if (answer51 == true) {
             playerMoney -= 400;
-            System.out.println("Money: " + playerMoney);
-            System.out.println("You have a hotel on each field.");
+            System.out.println(String.format("%s%d\n%s", "Money ", playerMoney, "You have a hotel on each field."));
         } else {
             System.out.println("Click enter.");
             String enter = input.nextLine();
@@ -1315,21 +1232,25 @@ public class Monopoly {
     public static void brownRentWithOneHouse() {
         rent[1] += rentOneHouse[1];
         rent[3] += rentOneHouse[3];
+        System.out.println("You have 1 house on each field.");
     }
 
     public static void brownRentWithTwoHouses() {
         rent[1] += rentTwoHouses[1];
         rent[3] += rentTwoHouses[3];
+        System.out.println("You have 2 houses on each field.");
     }
 
     public static void brownRentWithThreeHouses() {
         rent[1] += rentThreeHouses[1];
         rent[3] += rentThreeHouses[3];
+        System.out.println("You have 3 houses on each field.");
     }
 
     public static void brownRentWithFourHouses() {
         rent[1] += rentFourHouses[1];
         rent[3] += rentFourHouses[3];
+        System.out.println("You have 4 houses on each field.");
     }
 
     public static void brownRentWithHotel() {
@@ -1342,24 +1263,28 @@ public class Monopoly {
         rent[6] += rentOneHouse[6];
         rent[8] += rentOneHouse[8];
         rent[9] += rentOneHouse[9];
+        System.out.println("You have 1 house on each field.");
     }
 
     public static void lightBlueRentWithTwoHouses() {
         rent[6] += rentTwoHouses[6];
         rent[8] += rentTwoHouses[8];
         rent[9] += rentTwoHouses[9];
+        System.out.println("You have 2 houses on each field.");
     }
 
     public static void lightBlueRentWithThreeHouses() {
         rent[6] += rentThreeHouses[6];
         rent[8] += rentThreeHouses[8];
         rent[9] += rentThreeHouses[9];
+        System.out.println("You have 3 houses on each field.");
     }
 
     public static void lightBlueRentWithFourHouses() {
         rent[6] += rentFourHouses[6];
         rent[8] += rentFourHouses[8];
         rent[9] += rentFourHouses[9];
+        System.out.println("You have 4 houses on each field.");
     }
 
     public static void lightBlueRentWithHotel() {
@@ -1373,24 +1298,28 @@ public class Monopoly {
         rent[11] += rentOneHouse[11];
         rent[13] += rentOneHouse[13];
         rent[14] += rentOneHouse[14];
+        System.out.println("You have 1 house on each field.");
     }
 
     public static void pinkRentWithTwoHouses() {
         rent[11] += rentTwoHouses[11];
         rent[13] += rentTwoHouses[13];
         rent[14] += rentTwoHouses[14];
+        System.out.println("You have 2 houses on each field.");
     }
 
     public static void pinkRentWithThreeHouse() {
         rent[11] += rentThreeHouses[11];
         rent[13] += rentThreeHouses[13];
         rent[14] += rentThreeHouses[14];
+        System.out.println("You have 3 houses on each field.");
     }
 
     public static void pinkRentWithFourHouse() {
         rent[11] += rentFourHouses[11];
         rent[13] += rentFourHouses[13];
         rent[14] += rentFourHouses[14];
+        System.out.println("You have 4 houses on each field.");
     }
 
     public static void pinkRentWithHotel() {
@@ -1404,24 +1333,28 @@ public class Monopoly {
         rent[16] += rentOneHouse[16];
         rent[18] += rentOneHouse[18];
         rent[19] += rentOneHouse[19];
+        System.out.println("You have 1 house on each field.");
     }
 
     public static void orangeRentWithTwoHouses() {
         rent[16] += rentTwoHouses[16];
         rent[18] += rentTwoHouses[18];
         rent[19] += rentTwoHouses[19];
+        System.out.println("You have 2 houses on each field.");
     }
 
     public static void orangeRentWithThreeHouses() {
         rent[16] += rentThreeHouses[16];
         rent[18] += rentThreeHouses[18];
         rent[19] += rentThreeHouses[19];
+        System.out.println("You have 3 houses on each field.");
     }
 
     public static void orangeRentWithFourHouses() {
         rent[16] += rentFourHouses[16];
         rent[18] += rentFourHouses[18];
         rent[19] += rentFourHouses[19];
+        System.out.println("You have 4 houses on each field.");
     }
 
     public static void orangeRentWithHotel() {
@@ -1435,24 +1368,28 @@ public class Monopoly {
         rent[21] += rentOneHouse[21];
         rent[23] += rentOneHouse[23];
         rent[24] += rentOneHouse[24];
+        System.out.println("You have 1 house on each field.");
     }
 
     public static void redRentWithTwoHouses() {
         rent[21] += rentTwoHouses[21];
         rent[23] += rentTwoHouses[23];
         rent[24] += rentTwoHouses[24];
+        System.out.println("You have 2 houses on each field.");
     }
 
     public static void redRentWithThreeHouses() {
         rent[21] += rentThreeHouses[21];
         rent[23] += rentThreeHouses[23];
         rent[24] += rentThreeHouses[24];
+        System.out.println("You have 3 houses on each field.");
     }
 
     public static void redRentWithFourHouses() {
         rent[21] += rentFourHouses[21];
         rent[23] += rentFourHouses[23];
         rent[24] += rentFourHouses[24];
+        System.out.println("You have 4 houses on each field.");
     }
 
     public static void redRentWithHotel() {
@@ -1466,24 +1403,28 @@ public class Monopoly {
         rent[26] += rentOneHouse[26];
         rent[27] += rentOneHouse[27];
         rent[29] += rentOneHouse[29];
+        System.out.println("You have 1 house on each field.");
     }
 
     public static void yellowRentWithTwoHouses() {
         rent[26] += rentTwoHouses[26];
         rent[27] += rentTwoHouses[27];
         rent[29] += rentTwoHouses[29];
+        System.out.println("You have 2 houses on each field.");
     }
 
     public static void yellowRentWithThreeHouses() {
         rent[26] += rentThreeHouses[26];
         rent[27] += rentThreeHouses[27];
         rent[29] += rentThreeHouses[29];
+        System.out.println("You have 3 houses on each field.");
     }
 
     public static void yellowRentWithFourHouses() {
         rent[26] += rentFourHouses[26];
         rent[27] += rentFourHouses[27];
         rent[29] += rentFourHouses[29];
+        System.out.println("You have 4 houses on each field.");
     }
 
     public static void yellowRentWithHotel() {
@@ -1497,24 +1438,28 @@ public class Monopoly {
         rent[31] += rentOneHouse[31];
         rent[32] += rentOneHouse[32];
         rent[34] += rentOneHouse[34];
+        System.out.println("You have 1 house on each field.");
     }
 
     public static void greenRentWithTwoHouses() {
         rent[31] += rentTwoHouses[31];
         rent[32] += rentTwoHouses[32];
         rent[34] += rentTwoHouses[34];
+        System.out.println("You have 2 houses on each field.");
     }
 
     public static void greenRentWithThreeHouses() {
         rent[31] += rentThreeHouses[31];
         rent[32] += rentThreeHouses[32];
         rent[34] += rentThreeHouses[34];
+        System.out.println("You have 3 houses on each field.");
     }
 
     public static void greenRentWithFourHouses() {
         rent[31] += rentFourHouses[31];
         rent[32] += rentFourHouses[32];
         rent[34] += rentFourHouses[34];
+        System.out.println("You have 4 houses on each field.");
     }
 
     public static void greenRentWithHotel() {
@@ -1527,24 +1472,28 @@ public class Monopoly {
     public static void darkBlueRentWithOneHouse() {
         rent[37] += rentOneHouse[37];
         rent[39] += rentOneHouse[39];
+        System.out.println("You have 1 house on each field.");
 
     }
 
     public static void darkBlueRentWithTwoHouses() {
         rent[37] += rentTwoHouses[37];
         rent[39] += rentTwoHouses[39];
+        System.out.println("You have 2 houses on each field.");
 
     }
 
     public static void darkBlueRentWithThreeHouses() {
         rent[37] += rentThreeHouses[37];
         rent[39] += rentThreeHouses[39];
+        System.out.println("You have 3 houses on each field.");
 
     }
 
     public static void darkBlueRentWithFourHouses() {
         rent[37] += rentFourHouses[37];
         rent[39] += rentFourHouses[39];
+        System.out.println("You have 4 houses on each field.");
 
     }
 
